@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghost-ht6
+  namespace: ghost-ht6
+  labels:
+    app: ghost-ht6
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghost-ht6
+  template:
+    metadata:
+      labels:
+        app: ghost-ht6
+    spec:
+      containers:
+      - name: ghost-ht6
+        image: ghost
+        env:
+        - name: url
+          value: https://ade-kaas-demo.westeurope.cloudapp.azure.com/ghost-ht6
+        - name: NODE_ENV
+          value: development
+        resources:
+          limits:
+            cpu: "1"
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
+        ports:
+        - name: http
+          containerPort: 2368
+          protocol: TCP
+      restartPolicy: Always
