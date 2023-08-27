@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghost-fl9
+  namespace: ghost-fl9
+  labels:
+    app: ghost-fl9
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghost-fl9
+  template:
+    metadata:
+      labels:
+        app: ghost-fl9
+    spec:
+      containers:
+      - name: ghost-fl9
+        image: ghost
+        env:
+        - name: url
+          value: https://ade-kaas-demo.westeurope.cloudapp.azure.com/ghost-fl9
+        - name: NODE_ENV
+          value: development
+        resources:
+          limits:
+            cpu: "1"
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
+        ports:
+        - name: http
+          containerPort: 2368
+          protocol: TCP
+      restartPolicy: Always
