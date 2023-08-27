@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ghost-oz1
+  namespace: ghost-oz1
+spec:
+  accessModes:
+    - ReadWriteMany
+  # persistentVolumeReclaimPolicy: Retain
+  storageClassName: azurefile
+  resources:
+    requests:
+      storage: 50Gi
