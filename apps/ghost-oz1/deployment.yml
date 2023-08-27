@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghost-oz1
+  namespace: ghost-oz1
+  labels:
+    app: ghost-oz1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghost-oz1
+  template:
+    metadata:
+      labels:
+        app: ghost-oz1
+    spec:
+      containers:
+      - name: ghost-oz1
+        image: ghost
+        env:
+        - name: url
+          value: https://ade-kaas-demo.westeurope.cloudapp.azure.com/ghost-oz1
+        - name: NODE_ENV
+          value: development
+        resources:
+          limits:
+            cpu: "1"
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
+        ports:
+        - name: http
+          containerPort: 2368
+          protocol: TCP
+      restartPolicy: Always
