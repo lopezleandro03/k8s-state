@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ghost-ht6
+  namespace: ghost-ht6
+spec:
+  type: ClusterIP
+  selector:
+    app: ghost-ht6
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 2368
