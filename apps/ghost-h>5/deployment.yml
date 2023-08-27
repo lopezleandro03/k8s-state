@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghost-h>5
+  namespace: ghost-h>5
+  labels:
+    app: ghost-h>5
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghost-h>5
+  template:
+    metadata:
+      labels:
+        app: ghost-h>5
+    spec:
+      containers:
+      - name: ghost-h>5
+        image: ghost
+        env:
+        - name: url
+          value: https://ade-kaas-demo.westeurope.cloudapp.azure.com/ghost-h>5
+        - name: NODE_ENV
+          value: development
+        resources:
+          limits:
+            cpu: "1"
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
+        ports:
+        - name: http
+          containerPort: 2368
+          protocol: TCP
+      restartPolicy: Always
