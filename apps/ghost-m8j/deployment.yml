@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghost-m8j
+  namespace: ghost-m8j
+  labels:
+    app: ghost-m8j
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghost-m8j
+  template:
+    metadata:
+      labels:
+        app: ghost-m8j
+    spec:
+      containers:
+      - name: ghost-m8j
+        image: ghost
+        env:
+        - name: url
+          value: https://ade-kaas-demo.westeurope.cloudapp.azure.com/ghost-m8j
+        - name: NODE_ENV
+          value: development
+        resources:
+          limits:
+            cpu: "1"
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
+        ports:
+        - name: http
+          containerPort: 2368
+          protocol: TCP
+      restartPolicy: Always
