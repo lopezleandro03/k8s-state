@@ -4,7 +4,6 @@ namespace: apps
 resources:
   - namespace.yml
   - pvc.yml
-  - storage-class.yml
   - deployment.yml
   - service.yml
   - ingress.yml
