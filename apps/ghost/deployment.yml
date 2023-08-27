@@ -24,7 +24,7 @@ spec:
         image: ghost
         env:
         - name: url
-          value: https://ade-kaas-demo.westeurope.cloudapp.azure.com
+          value: https://ade-kaas-demo.westeurope.cloudapp.azure.com/tenant1
         - name: NODE_ENV
           value: development
         # - name: database__client
