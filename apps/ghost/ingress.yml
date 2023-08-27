@@ -17,7 +17,7 @@ spec:
   - host: ade-kaas-demo.westeurope.cloudapp.azure.com
     http:
       paths:
-      - path: /
+      - path: /tenant1
         pathType: Prefix
         backend:
           service:
