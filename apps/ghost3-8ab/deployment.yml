@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghost3-8ab
+  namespace: ghost3-8ab
+  labels:
+    app: ghost3-8ab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghost3-8ab
+  template:
+    metadata:
+      labels:
+        app: ghost3-8ab
+    spec:
+      containers:
+      - name: ghost3-8ab
+        image: ghost
+        env:
+        - name: url
+          value: https://ade-kaas-demo.westeurope.cloudapp.azure.com/ghost3-8ab
+        - name: NODE_ENV
+          value: development
+        resources:
+          limits:
+            cpu: "1"
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
+        ports:
+        - name: http
+          containerPort: 2368
+          protocol: TCP
+      restartPolicy: Always
