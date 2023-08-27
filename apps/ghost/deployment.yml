@@ -25,6 +25,8 @@ spec:
         env:
         - name: url
           value: https://ade-kaas-demo.westeurope.cloudapp.azure.com
+        - name: NODE_ENV
+          value: development
         # - name: database__client
         #   value: mysql
         # - name: database__connection__host
