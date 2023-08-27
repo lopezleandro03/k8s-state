@@ -1,0 +1,13 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: ghost3-8ab
+  namespace: flux-system
+spec:
+  interval: 1m
+  path: ./apps/ghost3-8ab
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  validation: client
