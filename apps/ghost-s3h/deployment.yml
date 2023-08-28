@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghost-s3h
+  namespace: ghost-s3h
+  labels:
+    app: ghost-s3h
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghost-s3h
+  template:
+    metadata:
+      labels:
+        app: ghost-s3h
+    spec:
+      containers:
+      - name: ghost-s3h
+        image: ghost
+        env:
+        - name: url
+          value: https://ade-kaas-demo.westeurope.cloudapp.azure.com/ghost-s3h
+        - name: NODE_ENV
+          value: development
+        resources:
+          limits:
+            cpu: "1"
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
+        ports:
+        - name: http
+          containerPort: 2368
+          protocol: TCP
+      restartPolicy: Always
