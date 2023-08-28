@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ghost-aqv
+  namespace: ghost-aqv
+spec:
+  type: ClusterIP
+  selector:
+    app: ghost-aqv
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 2368
