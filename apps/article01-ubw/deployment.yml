@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: article01-ubw
+  namespace: article01-ubw
+  labels:
+    app: article01-ubw
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: article01-ubw
+  template:
+    metadata:
+      labels:
+        app: article01-ubw
+    spec:
+      containers:
+      - name: article01-ubw
+        image: ghost
+        env:
+        - name: url
+          value: https://ade-kaas-demo.westeurope.cloudapp.azure.com/article01-ubw
+        - name: NODE_ENV
+          value: development
+        resources:
+          limits:
+            cpu: "1"
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
+        ports:
+        - name: http
+          containerPort: 2368
+          protocol: TCP
+      restartPolicy: Always
